@@ -47,7 +47,19 @@ export default function Navbar() {
 
 
 
+ document.addEventListener("DOMContentLoaded", function () {
+  const navButton = document.querySelector("[data-collapse-toggle]");
+  const navMenu = document.getElementById("navbar-default");
 
+  if (navButton && navMenu) {
+    navButton.addEventListener("click", function () {
+      navMenu.classList.toggle("hidden");
+      console.log("القائمة تعمل على الموبايل ✅");
+    });
+  } else {
+    console.log("لم يتم العثور على عناصر القائمة ❌");
+  }
+});
  
 
 
