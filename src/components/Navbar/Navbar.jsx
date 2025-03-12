@@ -60,6 +60,7 @@ export default function Navbar() {
     console.log("لم يتم العثور على عناصر القائمة ❌");
   }
 });
+alert("jkldklsdlsdksl")
  
 
 
