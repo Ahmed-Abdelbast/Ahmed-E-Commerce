@@ -241,7 +241,7 @@ function deletProduct(id){
         <li className="flex flex-wrap gap-4 text-sm font-bold">Total <span className="ml-auto">${resultCart1?.data?.data?.totalCartPrice}.00</span></li>
       </ul>
       <div className="mt-8 space-y-2 ">
-        <Link to={"/payment"}  ><button className="cursor-pointer text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md">Buy Now</button></Link>
+        <Link to={"/payment"}  ><button className="cursor-pointer text-sm px-4 mb-2 py-2.5 w-full font-semibold tracking-wide bg-gray-800 hover:bg-gray-900 text-white rounded-md">Buy Now</button></Link>
        <Link to={"/products"}> <button type="button" className="cursor-pointer text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-transparent hover:bg-gray-100 text-gray-800 border border-gray-300 rounded-md">Continue Shopping</button></Link>
       </div>
       <div className="mt-4 flex flex-wrap justify-center gap-4">

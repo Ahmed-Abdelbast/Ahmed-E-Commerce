@@ -13,7 +13,7 @@ export default function AuthContextProvider({children}) {
 
   const [userToken, setuserToken] = useState(null)
 
-  console.log(Cookies.get("userToken"));
+ 
   
 
   useEffect(()=>{

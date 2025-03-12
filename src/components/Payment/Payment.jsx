@@ -20,8 +20,8 @@ const {cartId} =  useContext(AddCart);
 
       }
     })
-    .then((res)=>{
-      console.log(res);
+    .then(()=>{
+      
 
       toast.success("Payment Success")
 Swal.fire({

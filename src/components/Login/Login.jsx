@@ -30,7 +30,7 @@ export default function Login() {
 
     axios.post("https://ecommerce.routemisr.com/api/v1/auth/signin",values)
    .then((data)=>{
-    console.log(data.statusText);
+    
     token(data.data.token)
     // localStorage.setItem("userToken",data.data.token);
     Cookies.set("userToken",data.data.token)
@@ -50,7 +50,7 @@ export default function Login() {
     
 
    
-   .catch((data)=>{console.log(data.response.data.message);
+   .catch((data)=>{
    const timeFaild= setInterval(()=>{
       setFaild(data.response.data.message)
     },1000)

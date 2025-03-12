@@ -1,32 +1,18 @@
 
 
-import { useContext, useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useContext,useState } from 'react'
+import {  NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import Cookies from 'js-cookie';
 // import useGetCart from '../../Hooks/useGetCart';
 import { AddCart } from '../../context/AddToCart';
-import useGetCart from '../../Hooks/useGetCart';
-
-
-
-
 
 export default function Navbar() {
   let navigate = useNavigate()
   let {token}=useContext(AuthContext)
-  let {numOfProd,setNumOfProd}=  useContext(AddCart)
-  console.log(numOfProd);
-  
-  // const resultCart = useGetCart()
-  // setNumOfProd(resultCart?.data?.data?.numOfCartItems)
-  function CartSection(){
-    navigate("/cart")
-  }
-  function WhshSection(){
-    navigate("/whishList")
-  }
+  let {numOfProd}=  useContext(AddCart)
 
+  
   function deletAcount(){
     Cookies.remove("userToken")
     token(null)
@@ -46,25 +32,14 @@ export default function Navbar() {
 
 
 
+ const [isOpen, setIsOpen] = useState(false);
+ const [isClose, setClose] = useState(true);
 
-//  document.addEventListener("DOMContentLoaded", function () {
-//   const navButton = document.querySelector("[data-collapse-toggle]");
-//   const navMenu = document.getElementById("navbar-default");
 
-//   if (navButton && navMenu) {
-//     navButton.addEventListener("click", function () {
-//       navMenu.classList.toggle("hidden");
-//       console.log("القائمة تعمل على الموبايل ✅");
-//     });
-//   } else {
-//     console.log("لم يتم العثور على عناصر القائمة ❌");
-//   }
-// });
-
-function clickkk(){
-  console.log("klsdlskdlsd");
-  
-}
+// function clickkk(){
+//   console.log("klsdlskdlsd");
+ 
+// }
 
  
 
@@ -78,58 +53,7 @@ function clickkk(){
     
 
 
-<nav className="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-      <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-    </a>
-    <button data-collapse-toggle="navbar-dropdown" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-dropdown" aria-expanded="false">
-      <span className="sr-only">Open main menu</span>
-      <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1h15M1 7h15M1 13h15" />
-      </svg>
-    </button>
-    <div className="hidden w-full md:block md:w-auto" id="navbar-dropdown">
-      <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <li>
-          <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
-        </li>
-        <li>
-          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" className="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Dropdown <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m1 1 4 4 4-4" />
-            </svg></button>
-          {/* Dropdown menu */}
-          <div id="dropdownNavbar" className="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
-            <ul className="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-              <li>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-              </li>
-              <li>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-              </li>
-              <li>
-                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
-              </li>
-            </ul>
-            <div className="py-1">
-              <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-        </li>
-        <li>
-          <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
-        </li>
-        <li>
-          <a href="#" className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+{/* */}
 
 
 
@@ -137,7 +61,7 @@ function clickkk(){
 
 
 
-{/* <nav className="bg-black text-white w-full fixed top-0 z-50">
+<nav className="bg-black text-white w-full fixed top-0 z-50">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
     <div>
@@ -178,7 +102,7 @@ function clickkk(){
 
 
     
-    <button data-collapse-toggle="navbar-default" onClick={clickkk} type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+    <button data-collapse-toggle="navbar-default" onClick={() => setIsOpen(!isOpen)} type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
       <span className="sr-only">Open main menu</span>
       <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1h15M1 7h15M1 13h15" />
@@ -186,108 +110,49 @@ function clickkk(){
     </button>
 
 
-    {Utoken != null ? <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+    {Utoken != null ? <div className={` w-full md:block md:w-auto ${isOpen ? "block" : "hidden"}`} id="navbar-default">
       <ul className="font-medium flex flex-col p-4 md:p-0 mt-4  rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0    ">
       <li className="hover:text-green-400 duration-200">
-          <NavLink to={"home"} >Home</NavLink>
+          <NavLink to={"home"} onClick={() => setIsOpen(!isOpen)} >Home</NavLink>
         </li>
 
         <li className="hover:text-green-400 duration-200">
-          <NavLink to={"products"}>Products</NavLink>
+          <NavLink to={"products"} onClick={() => setIsOpen(!isOpen)}>Products</NavLink>
         </li>
         <li className="hover:text-green-400 duration-200">
-          <NavLink to={"categories"}>Categories</NavLink>
+          <NavLink to={"categories"} onClick={() => setIsOpen(!isOpen)}>Categories</NavLink>
         </li>
         <li className="hover:text-green-400 duration-200">
-          <NavLink to={"brands"}>Brands</NavLink>
+          <NavLink to={"brands"} onClick={() => setIsOpen(!isOpen)}>Brands</NavLink>
         </li>
       </ul>
       <div > 
-      <div className="flex gap-4 justify-center md:hidden" id="navbar-default">
-        <ul className="flex gap-4">
-        {Utoken != null ? <ul className="flex gap-4">
-          <li onClick={WhshSection}>
-            <p className="hover:text-green-400 duration-200 cursor-pointer"><i className="fa-regular fa-heart text-3xl"></i></p>
-            
-          </li>
-          <li className="relative" onClick={CartSection}>
-            <p className="hover:text-green-400 duration-200 cursor-pointer"><i className="fas fa-cart-shopping text-3xl"></i></p>
-            <p className="absolute top-[-50%] left-[60%] text-white px-2 bg-green-600  rounded-4xl">{numOfProd ? numOfProd :0}</p>
-          </li>
-     
 
-        </ul> : ""}
-
-        </ul>
-        <div className="flex gap-3">
-        {Utoken === null ?  <>
-
-<NavLink to={"login"}><button className="cursor-pointer hover:text-green-400 duration-200">Login</button></NavLink>
-<NavLink to={"signup"}><button className="cursor-pointer hover:text-green-400 duration-200">signup</button></NavLink>
-
-
-
-</> : ""}
-
-{Utoken != null ? <>
-
-
-  <div>
-  <button id="ahmedahmed" data-dropdown-toggle="ahmed" className="text-white cursor-pointer hover:text-green-400  font-medium rounded-lg text-2xl  text-center inline-flex items-center" type="button"><i className="fa-solid fa-user"></i> <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m1 1 4 4 4-4" />
-    </svg>
-  </button>
-  <div id="ahmed" className="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-black">
-    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="ahmedahmed">
-      <li>
-        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-      </li>
-      <li>
-        <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-      </li>
-      <li>
-      <button onClick={deletAcount} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</button>
-      </li>
-    </ul>
-
-  </div>
-</div>
-
-
-
-
-
-
-
-
-</> : ""}
-        </div>
-      </div>
 
     </div>
 
       
       
     </div> : "" }
-    <div id="navbar-default" className="hidden w-full md:block md:w-auto"> 
+    <div id="" className={` w-full md:block md:w-auto ${isOpen ? "block" : "hidden"}`}> 
       <div className="flex gap-4 " >
         {Utoken != null ? <ul className="flex gap-6">
-          <li className="relative" onClick={WhshSection}>
+          <NavLink to={"whishList"} className="relative" onClick={()=>{setIsOpen(!isOpen)}}>
             <p className="hover:text-green-400 duration-200 cursor-pointer"><i className="fa-regular fa-heart text-3xl"></i></p>
             
-          </li>
-          <li className="relative" onClick={CartSection}>
+          </NavLink>
+          <NavLink to={"cart"} className="relative" onClick={()=>{setIsOpen(!isOpen)}} >
             <p className="hover:text-green-400 duration-200 cursor-pointer"><i className="fas fa-cart-shopping text-3xl"></i></p>
             <p className="absolute top-[-50%] left-[60%] text-white px-2 bg-green-600  rounded-4xl">{numOfProd ? numOfProd :0}</p>
-          </li>
+          </NavLink>
      
 
         </ul> : ""}
         <div className="flex gap-3 ">
           {Utoken === null ?  <>
 
-            <NavLink to={"login"}><button className="cursor-pointer hover:text-green-400 duration-200">Login</button></NavLink>
-            <NavLink to={"signup"}><button className="cursor-pointer hover:text-green-400 duration-200">signup</button></NavLink>
+            <NavLink to={"login"}><button onClick={() => setIsOpen(!isOpen)} className="cursor-pointer hover:text-green-400 duration-200">Login</button></NavLink>
+            <NavLink to={"signup"}><button onClick={() => setIsOpen(!isOpen)} className="cursor-pointer hover:text-green-400 duration-200">signup</button></NavLink>
           
           
           
@@ -297,11 +162,11 @@ function clickkk(){
 
 
  <div>
-  <button id="tarek" data-dropdown-toggle="ahmedtarek" className="text-white cursor-pointer hover:text-green-400  font-medium rounded-lg text-2xl  text-center inline-flex items-center" type="button"><i className="fa-solid fa-user"></i> <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+  <button id="tarek" onClick={()=>{setClose(!isClose)}} data-dropdown-toggle="ahmedtarek" className="text-white cursor-pointer hover:text-green-400  font-medium rounded-lg text-2xl  text-center inline-flex items-center" type="button"><i className="fa-solid fa-user"></i> <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m1 1 4 4 4-4" />
     </svg>
   </button>
-  <div id="ahmedtarek" className="z-10 hidden  divide-y divide-gray-100 rounded-lg shadow-sm w-44 bg-black">
+  <div id="ahmedtarek" className={`z-10   divide-y divide-gray-100 rounded-lg shadow-sm  bg-black absolute w-[30%] ${isClose ? "hidden" :"block"}`}>
     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="tarek">
       <li>
         <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
@@ -346,7 +211,7 @@ function clickkk(){
 
 
   </div>
-</nav> */}
+</nav>
 
 
 
